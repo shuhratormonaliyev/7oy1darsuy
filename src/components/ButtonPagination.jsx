@@ -20,7 +20,7 @@ const ButtonPagination = () => {
           setPhotos(response.data);
         })
         .catch(error => {
-          console.error("Error fetching data:", error);
+          console.error(error);
         })
         .finally(() => {
           setLoading(false); 
@@ -34,7 +34,7 @@ const ButtonPagination = () => {
   return (
     <div className='container mx-auto p-4'>
       <h1 className="text-2xl font-bold mb-4 text-center">Food Blog</h1>
-      <p className='text-[#7D7878] text-center'>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+      <p className='text-[#7D7878] text-center w-[593px] h-11 mt-10 mb-10 ml-[450px]'>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
       {loading ? (
         <div className="flex justify-center items-center h-32"> 
           <TailSpin color="#00BFFF" height={80} width={80} />
@@ -44,16 +44,17 @@ const ButtonPagination = () => {
           {photos.map(photo => (
             <div key={photo.id} className="card border rounded-lg overflow-hidden shadow-lg">
               <img 
-                src={photo.thumbnailUrl} 
+                src={photo.url} 
                 alt={photo.title} 
                 onError={(e) => { e.target.src = defaultImage; }} 
                 className="w-full h-32 object-cover" 
               />
-              <h3 className="p-2 text-center">{photo.title}</h3>
+              <h3 className="p-2 text-center">Matn: {photo.title}</h3>
+              <h3 className="p-2 text-center">ID :{photo.id}</h3>
             </div>
           ))}
         </div>
-      )}
+      )} 
       <div className="flex justify-center mt-6 w-full max-w-xs mx-auto"> 
         <ResponsivePagination
           current={currentPage}

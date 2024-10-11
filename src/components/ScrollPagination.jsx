@@ -50,7 +50,8 @@ const ScrollPagination = () => {
                 onError={(e) => { e.target.src = defaultImage; }} 
                 className="w-full h-32 object-cover"
               />
-              <h3 className="p-2 text-center">{photo.title}</h3>
+              <h3 className="p-2 text-center">Matn: {photo.title}</h3>
+              <p className='p-2 text-center'>ID:{photo.id}</p>
             </div>
           ))}
         </div>
